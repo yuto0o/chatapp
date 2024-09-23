@@ -1,0 +1,51 @@
+{% extends 'myapp/base.html' %}
+
+{% load static %}
+{% block extra_style %}<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/setting.css' %}" />{% endblock %}
+{% block header-title %}設定{% endblock %}
+
+
+{% block content %}
+
+
+    <div class="setting_option">
+        <a href="{% url 'myapp:change_email' %}">
+
+            <button class="setting_option_button">
+                <div class="setting_option_content">ユーザー名変更</div>
+            </button>
+        </a>
+    </div>
+    <div class="setting_option">
+        <a href="{% url 'myapp:change_email' %}">
+
+            <button class="setting_option_button">
+                <div class="setting_option_content">メールアドレス変更</div>
+            </button>
+        </a>
+    </div>
+    <div class="setting_option">
+        <a href="{% url 'myapp:change_image' %}">
+
+            <button class="setting_option_button">
+                <div class="setting_option_content">アイコン変更</div>
+            </button>
+        </a>
+    </div>
+    <div class="setting_option">
+        <a href="{% url 'myapp:change_password' %}">
+
+            <button class="setting_option_button">
+                <div class="setting_option_content">パスワード変更</div>
+            </button>
+        </a>
+    </div>
+    <div class="setting_option">
+        <a href="{% url 'myapp:logout' %}">
+
+            <button class="setting_option_button">
+                <div class="setting_option_content">ログアウト</div>
+            </button>
+        </a>
+    </div>
+{% endblock %}

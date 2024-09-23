@@ -1,0 +1,47 @@
+.member_registration_first{
+    text-align: center;
+    color: red;
+}
+.form-block{
+    display: flex;
+    width: 80%;
+}
+
+.member_registration_second{
+    width: 100%;
+}
+
+fieldset{
+    margin-top: 10px;
+    border: solid 0;
+    width: 100%;
+}
+
+.form-title{
+    margin-left: 10%;
+    width: 120px;
+}
+
+.form-input{
+    width: 100%;
+    margin-left: 20px;
+    
+}
+
+.input-text{
+    width: 100%;
+}
+
+.member_registration_second{
+    width: 100%;
+}
+
+.submit-btn{
+    text-align: center;
+}
+.question{
+    display: flex;
+}
+.question_name{
+width: 200px;
+}

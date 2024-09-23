@@ -1,0 +1,17 @@
+{% extends 'myapp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h2>ユーザー名の変更</h2>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">変更する</button>
+    </form>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

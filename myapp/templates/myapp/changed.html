@@ -1,0 +1,10 @@
+{% extends 'myapp/base.html' %}
+
+{% load static %}
+{% block content %}
+{%if changed_type%}
+    
+<h2>{{changed_type}}</h2>
+
+{%endif%}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'myapp/base.html' %}
+
+{% load static %}
+
+{% block header-title %}
+{% comment %} <a href="{% get_return_link request %}">戻る</a> {% endcomment %}
+あなたと{{talking_username}}のトークルーム{% endblock %}
+
+{% block extra_style %}<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/talk_room.css' %}" />{% endblock %}
+{% block content %}
+{% for message in messages %}
+{% comment %} userは勝手に送られるらしいよ {% endcomment %}
+    {% if message.sender == user %}
+    <div class="i_sent">{{ message.content}}<br>{{message.sender}}&nbsp;to&nbsp; {{message.recipient}}<div class="date">{{message.created_at}}</div></div>
+    {% else %}
+    <div class="you_sent">{{ message.content}}<br> {{message.sender}}&nbsp;to&nbsp; {{message.recipient}}<div class="date">{{message.created_at}}</div></div>
+    {% endif %} 
+{% endfor %}
+{% endblock %}
+
+
+{% block footer %}
+<footer>
+    <form method="post" enctype="multipart/form-data">
+        <form  action="{% url 'myapp:talk_room' %}" class="messagebox" method="post">
+            {% csrf_token %}
+            <div>{{ form.content }}</div>
+            <button class="messagebow_btn" type="submit">送信</button>
+        </form>
+    </form>
+</footer>
+
+{% comment %} <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-container__item">
+            <form method="post" enctype="multipart/form-data">
+                <form  action="{% url 'myapp:talk_room' %}" class="messagebox" method="post">
+                    {% csrf_token %}
+                    
+                        {{ form.content }}<button class="messagebox_btn" type="submit">送信</button>
+                      
+                        
+                    
+                </form>
+            </form>
+        </div>
+        
+    </div>
+</footer> {% endcomment %}
+
+
+{% endblock %}

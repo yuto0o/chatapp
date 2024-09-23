@@ -1,0 +1,62 @@
+{% extends 'myapp/base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>friends</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/friends.css' %}" />
+    {% block extra_style %}<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/friends.css' %}" />{% endblock %}
+</head>
+<body>
+    {% block header-title %}友達{% endblock %}
+
+    {% block content %}
+    {% for userlist, content, created_at in message_list %}
+        {% if userlist.image %}
+
+        <a href="{% url 'myapp:talk_room' userlist.id %}"  class="user_link">
+        
+            <div class="user_tag">
+                <div>
+                    <img src="{{ userlist.image.url }}"   class="userimage"/>
+                </div>
+                <div class="username">{{userlist.username}}</div>
+
+                {% if content %}
+                <div class="content">{{ content|truncatechars:7 }}</div>
+                
+                {% else %}
+                <div class="content">ぼっち乙</div>
+                {% endif %}      
+                {% if content %}
+                <div class="created_at">{{created_at}}</div> 
+                {% endif %}     
+                    {% comment %} {% if get_message.sender|stringformat:"s"　== userlist.username|stringformat:"s" %} {% endcomment %}
+                        {% comment %} classから引っ張ってきた情報同士を比較するときは|stringformat:"s"で文字列にしないといけないようですね、class固有のtypeがあるようだ {% endcomment %}
+            </div> 
+                
+        </a>       
+        
+                
+        {% endif %} 
+                
+        
+
+
+                        
+    {% endfor %}
+
+    <div>              
+    ログイン中のユーザー:{{user}}
+    </div>
+
+    {% endblock %}
+    
+    
+
+    
+</body>
+</html>

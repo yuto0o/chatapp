@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/login.css' %}" />
+</head>
+<body>
+    <header class="login_first">ログイン</header><hr>
+    
+    <form action="{% url 'myapp:login_view' %}" method="post">
+    {% csrf_token %}
+        {{ form.as_p }}
+        <p><input type="submit" value="ログイン"></p>
+    </form>
+    
+</body>
+</html>
