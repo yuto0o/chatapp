@@ -1,5 +1,6 @@
 .i_sent{
     margin-left: 50%;
+    width:50%;
     
     border: 0.5rem outset pink;
   
@@ -37,4 +38,7 @@
   bottom: 0;
   
   color:red;
+}
+.kaigyou{
+  width: 70%;
 }

@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block header-title %}
+{% block header-title %}<a href="{% url 'myapp:back_to_friends'  %}">＜戻る</a>
 {% comment %} <a href="{% get_return_link request %}">戻る</a> {% endcomment %}
 あなたと{{talking_username}}のトークルーム{% endblock %}
 
@@ -11,9 +11,9 @@
 {% for message in messages %}
 {% comment %} userは勝手に送られるらしいよ {% endcomment %}
     {% if message.sender == user %}
-    <div class="i_sent">{{ message.content}}<br>{{message.sender}}&nbsp;to&nbsp; {{message.recipient}}<div class="date">{{message.created_at}}</div></div>
+    <div class="i_sent"><div class="kaigyou">{{ message.content}}</div>{{message.sender}}&nbsp;to&nbsp; {{message.recipient}}<div class="date">{{message.created_at}}</div></div>
     {% else %}
-    <div class="you_sent">{{ message.content}}<br> {{message.sender}}&nbsp;to&nbsp; {{message.recipient}}<div class="date">{{message.created_at}}</div></div>
+    <div class="you_sent"><div class="kaigyou">{{ message.content}}</div> {{message.sender}}&nbsp;to&nbsp; {{message.recipient}}<div class="date">{{message.created_at}}</div></div>
     {% endif %} 
 {% endfor %}
 {% endblock %}

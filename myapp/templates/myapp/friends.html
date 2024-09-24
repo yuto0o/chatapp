@@ -11,7 +11,25 @@
     {% block extra_style %}<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/friends.css' %}" />{% endblock %}
 </head>
 <body>
-    {% block header-title %}友達{% endblock %}
+    {% block header %}
+    <header class="header">
+        <a href="{% url 'myapp:setting' %}" class="footer-item__link">
+        <div class="header-container">
+            
+                <span class="user_icon">
+                    <img src="{{ user.image.url }}"   class="userimage"/>
+                </span>
+            
+            
+            <span class="header-container__title">
+                
+                {% block header-title %}{{user}}の友達{% endblock %}
+            </span>
+        </div>
+        </a>
+    </header>
+    {% endblock %}
+    
 
     {% block content %}
     {% for userlist, content, created_at in message_list %}
@@ -23,13 +41,13 @@
                 <div>
                     <img src="{{ userlist.image.url }}"   class="userimage"/>
                 </div>
-                <div class="username">{{userlist.username}}</div>
+                <div class="username">{{userlist.username|truncatechars:11}}</div>
 
                 {% if content %}
                 <div class="content">{{ content|truncatechars:7 }}</div>
                 
                 {% else %}
-                <div class="content">ぼっち乙</div>
+                <div class="content">まだ話したことないユーザーです。話してみましょう！</div>
                 {% endif %}      
                 {% if content %}
                 <div class="created_at">{{created_at}}</div> 

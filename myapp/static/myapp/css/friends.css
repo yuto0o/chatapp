@@ -19,6 +19,7 @@
 
 .username{
     font-size: 30px;
+    width: 10%;
 }
 
 .user_link{
@@ -33,7 +34,7 @@
 
 .content{
     margin-left: 50px;
-    width:30%
+    width:50%
     
 }
 

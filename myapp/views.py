@@ -107,7 +107,7 @@ def change_username(request):
     else:
         form = ChangeUsernameForm()
 
-    return render(request, 'change_username.html', {'form': form})
+    return render(request, 'myapp/change_username.html', {'form': form})
 
 def changed(request,params):
     return render(request, 'change_username.html', params)
@@ -262,12 +262,8 @@ def talk_room(request, userlist_id):
         message.recipient =  CustomUser.objects.get(id=userlist_id)
         # print(3)
         message.save()
+        form = MessageForm()#空にする
 
-        
-
-        
-    
-            
 
     else:
         form = MessageForm()
@@ -288,9 +284,6 @@ def talk_room(request, userlist_id):
     # print(userlist_id)
     # print(Message.objects.get(sender=request.user))
     talking_username=CustomUser.objects.get(id=userlist_id)
-    
-
-    
 
     params={
         "data":users,
@@ -300,16 +293,17 @@ def talk_room(request, userlist_id):
         'form': form,
         'messages':messages,
         "talking_username":talking_username
-        
-        
-
-
     }
     
 
     # return render(request, 'myapp/signup.html', param)
 
     return render(request, "myapp/talk_room.html",params)
+
+def back_to_friends(request):
+    return redirect('/friends')
+
+
 
 def setting(request):
     return render(request, "myapp/setting.html")
