@@ -144,3 +144,5 @@ if os.path.isfile('.env'): # .envファイルが存在しない時にもエラ�
 
     DEBUG = env('DEBUG')
     ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+
+
